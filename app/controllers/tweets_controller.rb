@@ -10,7 +10,7 @@ class TweetsController < ApplicationController
 
   def create
     @tweet = Tweet.new tweet_params
-    @tweet.user = User.create username: SecureRandom.uuid, password: '123456', password_confirmation: '123456' # TODO: get logged in user
+    @tweet.user = current_user
 
     if @tweet.save
       set_response
