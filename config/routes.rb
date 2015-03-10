@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root 'tweets#index'
+  root 'user#new'
 
+  resources :users, only: [:new, :create, :show]
   resources :tweets, only: [:index, :create]
 end

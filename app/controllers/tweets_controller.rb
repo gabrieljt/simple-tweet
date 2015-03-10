@@ -10,13 +10,13 @@ class TweetsController < ApplicationController
 
   def create
     @tweet = Tweet.new tweet_params
-    @tweet.user = FactoryGirl.create :user # temporary, will get logged in user
+    @tweet.user = FactoryGirl.create :user # TODO: get logged in user
 
     if @tweet.save
       set_response
-      respond_with(@response, location: tweets_path)
+      respond_with @response, location: tweets_path
     else
-      render 'index'
+      render :index
     end
   end
 
