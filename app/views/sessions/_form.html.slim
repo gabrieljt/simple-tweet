@@ -1,0 +1,10 @@
+= simple_form_for(:session, url: new_login_path) do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :username, required: true, autofocus: true
+    = f.input :password, required: true
+  .form-actions
+    = f.button :submit, "Log in"
+
+  p New user?
+  = link_to "Sign up now!", new_user_path

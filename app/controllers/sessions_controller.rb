@@ -1,12 +1,12 @@
 class SessionsController < ApplicationController
   def new
-    @user = User.new
-    respond_with @user
   end
 
   def create
-    @user = User.new session_params
-    User.exists? username: @user.username ? redirect_to(tweets_path) : render(:new)
+    session = session_params
+    @user = User.find_by username: params[:session][:username].downcase if session[:username].present?
+
+    @user && @user.authenticate(params[:session][:password]) ? redirect_to(tweets_path) : render(:new)
   end
 
   def destroy
@@ -15,6 +15,6 @@ class SessionsController < ApplicationController
   private
 
   def session_params
-    params.require(:user).permit(:username, :password)
+    params.require(:session).permit(:username, :password)
   end
 end
