@@ -31,12 +31,26 @@ Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
 
+# Include Warden::Test::Helpers is necessary to call the login_as method here inside spec helper file
+include Warden::Test::Helpers
+Warden.test_mode!
+
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   # config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
   # Remove verbose methods from this hot girl
   config.include FactoryGirl::Syntax::Methods
+
+  # Include Devise methods to the specs
+  config.include Devise::TestHelpers, type: :controller
+
+  config.before do
+    @current_user = FactoryGirl.create(:user)
+    login_as @current_user
+
+    # User.current = @current_user
+  end
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
