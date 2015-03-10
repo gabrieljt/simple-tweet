@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :tweet do
-    user ""
-content "MyString"
-  end
+    user
 
+    content { Forgery('lorem_ipsum').words Random() }
+  end
 end
