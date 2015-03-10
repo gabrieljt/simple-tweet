@@ -11,13 +11,13 @@ RSpec.describe User, type: :model do
     it { is_expected.to validate_presence_of :username }
     it { is_expected.to validate_uniqueness_of :username }
 
-    it { is_expected.to validate_presence_of :password }
+    it { is_expected.to validate_presence_of :password_digest }
   end
 
   context 'Attributes' do
     it { is_expected.to have_db_column(:id).of_type :integer }
     it { is_expected.to have_db_column(:username).of_type :string }
-    it { is_expected.to have_db_column(:password).of_type :string }
+    it { is_expected.to have_db_column(:password_digest).of_type :string }
   end
 
   context 'Indexes' do
