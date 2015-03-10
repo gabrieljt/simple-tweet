@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe TweetsController, type: :controller do
 
-  let(:valid_attributes) { build(:tweet).attributes }
+  let(:valid_attributes) { attributes_for :tweet }
   let(:invalid_attributes) { attributes_for :invalid_tweet }
   let(:valid_session) { {} }
 
@@ -14,8 +14,8 @@ RSpec.describe TweetsController, type: :controller do
     end
 
     it "assigns all tweets descending as @tweets" do
-      tweet_one = create :tweet, valid_attributes
-      tweet_two = create :tweet, valid_attributes
+      tweet_one = create :tweet
+      tweet_two = create :tweet
 
       get :index, {}, valid_session
 
@@ -32,7 +32,7 @@ RSpec.describe TweetsController, type: :controller do
       end
 
       it "assigns a newly created tweet as @tweet" do
-        post :create, { :tweet => valid_attributes }, valid_session
+        post :create, { tweet: valid_attributes }, valid_session
 
         expect(assigns :tweet).to be_a Tweet
         expect(assigns :tweet).to be_persisted

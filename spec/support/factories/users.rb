@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :user do
     username  { Forgery(:name).full_name }
-    password_digest  { Forgery(:basic).password }
+    password  { Forgery(:basic).password }
+    password_confirmation { password }
   end
 end

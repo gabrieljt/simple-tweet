@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  before do create :user end
-
   context 'Associations' do
     it { is_expected.to have_many :tweets }
   end
@@ -10,8 +8,6 @@ RSpec.describe User, type: :model do
   context 'Validations' do
     it { is_expected.to validate_presence_of :username }
     it { is_expected.to validate_uniqueness_of :username }
-
-    it { is_expected.to validate_presence_of :password_digest }
   end
 
   context 'Attributes' do

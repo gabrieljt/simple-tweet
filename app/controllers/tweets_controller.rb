@@ -10,6 +10,7 @@ class TweetsController < ApplicationController
 
   def create
     @tweet = Tweet.new tweet_params
+    @tweet.user = FactoryGirl.create :user # temporary, will get logged in user
 
     if @tweet.save
       set_response
@@ -30,6 +31,6 @@ class TweetsController < ApplicationController
   end
 
   def tweet_params
-    params.require(:tweet).permit(:user_id, :content)
+    params.require(:tweet).permit(:content)
   end
 end
