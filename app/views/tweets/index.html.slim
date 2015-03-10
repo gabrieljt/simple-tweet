@@ -1,7 +1,10 @@
-h2
-  | Hello #{current_user.username}, Spread the Tweet
-
-= render 'form'
+- if logged_in?
+  h2
+    | Hello #{current_user.username}, Spread the Tweet! Or #{link_to("log out...", logout_path, method: :delete)}
+  = render 'form'
+- else
+  h2
+    | Hello, #{link_to("sign in", login_path)} or #{link_to("sign up", new_user_path)} to Spread the Tweet!
 
 - if @tweets.any?
   h2

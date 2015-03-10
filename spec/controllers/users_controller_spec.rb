@@ -8,9 +8,16 @@ RSpec.describe UsersController, type: :controller do
 
   describe "GET new" do
     it "assigns a new user as @user" do
+      log_out
       get :new, {}, valid_session
 
       expect(assigns :user).to be_a_new User
+    end
+
+    it "is redirects to root_path if logged in" do
+      get :new, {}, valid_session
+
+      expect(response).to redirect_to root_path
     end
   end
 
