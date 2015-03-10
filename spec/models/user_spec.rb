@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  before do create :user end # TODO: verify error "User Validations should require case sensitive unique value for username"
+  before do create :user end
 
   context 'Associations' do
     it { is_expected.to have_many :tweets }
