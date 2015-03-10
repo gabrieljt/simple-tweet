@@ -1,6 +1,5 @@
 FactoryGirl.define do
   factory :hashtag do
-    keyword "MyString"
+    keyword { '#' + Forgery('name').job_title.delete(' ') }
   end
-
 end
