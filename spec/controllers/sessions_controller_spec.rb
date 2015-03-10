@@ -17,11 +17,16 @@ RSpec.describe SessionsController, type: :controller do
 
   describe "POST create" do
     context "with valid params" do
-
-      it "assigns a logged in session as @user" do
+      it "assigns a logged in user as @current_user" do
         post :create, { session: valid_attributes }, valid_session
 
-        expect(assigns :user).to be_a User
+        expect(assigns :current_user).to be_a User
+      end
+
+      it "logs in the the @current_user" do
+        post :create, { session: valid_attributes }, valid_session
+
+        expect(session[:user_id]).not_to be nil
       end
 
       it "redirects to the tweets timeline" do
@@ -37,6 +42,20 @@ RSpec.describe SessionsController, type: :controller do
 
         expect(response).to render_template :new
       end
+    end
+  end
+
+  describe "DELETE destroy" do
+    it "logs out the @current_user" do
+      delete :destroy, {}, valid_session
+
+      expect(session[:user_id]).to be nil
+    end
+
+    it "redirects to root_path" do
+      delete :destroy, {}, valid_session
+
+      expect(response).to redirect_to root_path
     end
   end
 end

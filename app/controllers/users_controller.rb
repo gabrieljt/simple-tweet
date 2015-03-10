@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
   def new
-    @user = User.new
-    respond_with @user
+    if !logged_in?
+      @user = User.new
+      respond_with @user
+    else
+      redirect_to root_path
+    end
   end
 
   def create
