@@ -8,12 +8,12 @@ RSpec.describe Tweet, type: :model do
 
   context 'Validations' do
     it { is_expected.to validate_presence_of :user }
-    it { is_expected.to validate_presence_of :content }
+    it { is_expected.to validate_presence_of :message }
   end
 
   context 'Attributes' do
     it { is_expected.to have_db_column(:user_id).of_type :integer }
-    it { is_expected.to have_db_column(:content).of_type :string }
+    it { is_expected.to have_db_column(:message).of_type :string }
   end
 
   context 'Indexes' do

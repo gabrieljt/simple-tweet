@@ -1,0 +1,6 @@
+= simple_form_for(@tweet) do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :message, required: true, autofocus: true
+  .form-actions
+    = f.button :submit, "Tweet!"

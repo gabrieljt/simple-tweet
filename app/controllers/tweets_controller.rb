@@ -10,7 +10,7 @@ class TweetsController < ApplicationController
 
   def create
     @tweet = Tweet.new tweet_params
-    @tweet.user = FactoryGirl.create :user # TODO: get logged in user
+    @tweet.user = User.create username: SecureRandom.uuid, password: '123456', password_confirmation: '123456' # TODO: get logged in user
 
     if @tweet.save
       set_response
@@ -31,6 +31,6 @@ class TweetsController < ApplicationController
   end
 
   def tweet_params
-    params.require(:tweet).permit(:content)
+    params.require(:tweet).permit(:message)
   end
 end
