@@ -1,2 +1,10 @@
-h1 Users#show
-p Find me in app/views/users/show.html.slim
+h2
+  | #{@user.username} Tweets
+
+- if @user.tweets.any?
+  - @user.tweets.each do |tweet|
+    p = tweet.message
+- else
+  p #{@user.username} appears to be shy and haven't spread the Tweet yet!
+
+= link_to "Back to Tweets", tweets_path

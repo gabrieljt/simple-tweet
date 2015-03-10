@@ -20,5 +20,5 @@
       - @tweets.each do |tweet|
         tr
           td = tweet.message
-          td = tweet.user.username
+          td = link_to tweet.user.username, user_path(tweet.user)
           td = tweet.created_at
