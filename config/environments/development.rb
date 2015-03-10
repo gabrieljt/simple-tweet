@@ -45,5 +45,10 @@ Rails.application.configure do
     g.factory_girl dir: 'spec/support/factories'
 
     g.test_framework :rspec, view_specs: false, request_specs: false, routing_specs: false
+
+    g.helper      = false
+    g.stylesheets = false
+    g.javascripts = false
+    g.jbuilder    = false
   end
 end

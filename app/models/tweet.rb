@@ -5,4 +5,6 @@ class Tweet < ActiveRecord::Base
   validates :user, presence: true, associated: true
 
   validates :content, presence: true
+
+  default_scope { order created_at: :desc }
 end
