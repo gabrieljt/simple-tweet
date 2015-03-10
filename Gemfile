@@ -17,9 +17,6 @@ gem 'slim-rails'
 
 gem 'enumerate_it'
 
-gem 'devise'
-gem 'devise-i18n-views'
-
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
