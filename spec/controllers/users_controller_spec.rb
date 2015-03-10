@@ -53,8 +53,8 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe "GET show" do
-    it "assigns logged in user as @user" do
-      get :new, {}, valid_session
+    it "assigns user_id as @user" do
+      get :show, { id: create(:user).id }, valid_session
 
       expect(assigns :user).to be_a User
     end

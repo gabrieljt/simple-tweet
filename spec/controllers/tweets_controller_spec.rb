@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe TweetsController, type: :controller do
 
-  let(:current_user) { create :user }
   let(:valid_attributes) { attributes_for :tweet }
   let(:invalid_attributes) { attributes_for :invalid_tweet }
   let(:valid_session) { {} }
