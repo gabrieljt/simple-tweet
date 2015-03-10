@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   respond_to :html, :json
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
+  responders :flash, :http_cache
   protect_from_forgery with: :exception
 end

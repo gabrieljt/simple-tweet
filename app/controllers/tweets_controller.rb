@@ -10,12 +10,13 @@ class TweetsController < ApplicationController
 
   def create
     @tweet = Tweet.new tweet_params
+    @tweet.user = User.create username: SecureRandom.uuid, password: '123456', password_confirmation: '123456' # TODO: get logged in user
 
     if @tweet.save
       set_response
-      respond_with(@response, location: tweets_path)
+      respond_with @response, location: tweets_path
     else
-      render 'index'
+      render :index
     end
   end
 
@@ -30,6 +31,6 @@ class TweetsController < ApplicationController
   end
 
   def tweet_params
-    params.require(:tweet).permit(:user_id, :content)
+    params.require(:tweet).permit(:message)
   end
 end

@@ -2,7 +2,7 @@ class CreateTweets < ActiveRecord::Migration
   def change
     create_table :tweets do |t|
       t.references :user, required: true, index: true
-      t.string :content, null: false
+      t.string :message, null: false
 
       t.timestamps null: false
     end
