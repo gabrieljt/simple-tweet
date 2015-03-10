@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
     @user = User.find_by username: session[:username].downcase if session[:username].present?
 
     if @user && @user.authenticate(session[:password])
+      log_in @user
       redirect_to tweets_path
     else
       render :new

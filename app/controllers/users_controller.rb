@@ -7,11 +7,16 @@ class UsersController < ApplicationController
   def create
     @user = User.new user_params
 
-    @user.save ? redirect_to(tweets_path) : render(:new)
+    if @user.save
+      log_in @user
+      redirect_to tweets_path
+    else
+      render :new
+    end
   end
 
   def show
-    @user = User.find params[:id] # TODO: get logged in user in all controllers
+    @user = current_user
   end
 
   private

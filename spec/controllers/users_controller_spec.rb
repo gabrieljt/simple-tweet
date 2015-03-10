@@ -10,7 +10,7 @@ RSpec.describe UsersController, type: :controller do
     it "assigns a new user as @user" do
       get :new, {}, valid_session
 
-      expect(assigns :user ).to be_a_new User
+      expect(assigns :user).to be_a_new User
     end
   end
 
@@ -49,6 +49,14 @@ RSpec.describe UsersController, type: :controller do
 
         expect(response).to render_template :new
       end
+    end
+  end
+
+  describe "GET show" do
+    it "assigns logged in user as @user" do
+      get :new, {}, valid_session
+
+      expect(assigns :user).to be_a User
     end
   end
 end
