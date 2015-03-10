@@ -37,5 +37,13 @@ Rails.application.configure do
   config.assets.raise_runtime_errors = true
 
   # Raises error for missing translations
-  # config.action_view.raise_on_missing_translations = true
+  config.action_view.raise_on_missing_translations = true
+
+  # Generators
+  config.generators do |g|
+    g.fixture_replacement :factory_girl
+    g.factory_girl dir: 'spec/support/factories'
+
+    g.test_framework :rspec, view_specs: false, request_specs: false, routing_specs: false
+  end
 end
