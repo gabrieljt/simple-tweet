@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe TweetsController, type: :controller do
-  render_views
 
   let(:valid_attributes) { build(:tweet).attributes }
   let(:invalid_attributes) { attributes_for :invalid_tweet }
@@ -14,12 +13,13 @@ RSpec.describe TweetsController, type: :controller do
       expect(assigns :tweet ).to be_a_new Tweet
     end
 
-    it "assigns all tweets as @tweets" do
-      tweet = create :tweet, valid_attributes
+    it "assigns all tweets descending as @tweets" do
+      tweet_one = create :tweet, valid_attributes
+      tweet_two = create :tweet, valid_attributes
 
       get :index, {}, valid_session
 
-      expect(assigns :tweets).to eq [tweet]
+      expect(assigns :tweets).to eq [tweet_two, tweet_one]
     end
   end
 
