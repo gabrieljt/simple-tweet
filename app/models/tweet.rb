@@ -4,7 +4,7 @@ class Tweet < ActiveRecord::Base
 
   validates :user, presence: true, associated: true
 
-  validates :message, presence: true
+  validates :message, presence: true, length: { maximum: 140 }
 
   default_scope { order created_at: :desc }
 end
