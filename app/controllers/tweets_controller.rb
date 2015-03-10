@@ -10,10 +10,13 @@ class TweetsController < ApplicationController
 
   def create
     @tweet = Tweet.new tweet_params
-    @tweet.save
 
-    set_response
-    respond_with(@response, location: tweets_path)
+    if @tweet.save
+      set_response
+      respond_with(@response, location: tweets_path)
+    else
+      render 'index'
+    end
   end
 
   private
