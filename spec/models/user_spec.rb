@@ -8,6 +8,8 @@ RSpec.describe User, type: :model do
   context 'Validations' do
     it { is_expected.to validate_presence_of :username }
     it { is_expected.to validate_uniqueness_of :username }
+
+    it { is_expected.to ensure_length_of(:password).is_at_least 6 }
   end
 
   context 'Attributes' do
