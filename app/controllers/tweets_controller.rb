@@ -3,7 +3,7 @@ class TweetsController < ApplicationController
 
   def index
     @tweet = Tweet.new
-
+    # TODO: @tweets.each |tweet| do hashtag_service.parse_output tweet end
     set_response
     respond_with @response
   end
@@ -13,6 +13,7 @@ class TweetsController < ApplicationController
     @tweet.user = current_user
 
     if @tweet.save
+      # TODO: hashtag_service.parse_input @tweet
       set_response
       respond_with @response, location: tweets_path
     else
