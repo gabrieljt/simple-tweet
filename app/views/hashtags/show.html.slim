@@ -1,0 +1,10 @@
+h2
+  | Tweets about #{@hashtag.keyword}
+
+- if @hashtag_tweets.any?
+  - @hashtag_tweets.each do |tweet|
+    p = tweet.message.html_safe
+- else
+  p It seems no one is talking about #{@hashtag.keyword} anymore...
+
+= link_to "Back to Tweets", tweets_path
