@@ -25,6 +25,6 @@ module HashtagsHelper
   private
 
   def hashtags_array(string)
-    hashtags = string.split.find_all{|word| /^#.+/.match word}
+    string.split.find_all{|word| /^#.+/.match word}.uniq
   end
 end
