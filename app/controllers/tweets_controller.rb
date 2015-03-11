@@ -3,7 +3,7 @@ class TweetsController < ApplicationController
 
   def index
     @tweet = Tweet.new
-    # TODO: @tweets.each |tweet| do hashtag_service.parse_output tweet end
+    # TODO: @tweets.each do |tweet| hashtag_service.parse_output tweet end
     set_response
     respond_with @response
   end
