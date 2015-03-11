@@ -1,11 +1,10 @@
 class TweetsController < ApplicationController
+  include HashtagsHelper
   before_action :set_tweets
 
   def index
     @tweet = Tweet.new
-
-    hashtag_service = HashtagService.new
-    # @tweets.each do |tweet| tweet.message = hashtag_service.parse_output_for tweet: tweet end
+    @tweets.each do |tweet| parse_output_for tweet: tweet end
 
     set_response
     respond_with @response
@@ -16,8 +15,7 @@ class TweetsController < ApplicationController
     @tweet.user = current_user
 
     if @tweet.save
-      hashtag_service = HashtagService.new
-      hashtag_service.parse_input_for tweet: @tweet
+      parse_input_for tweet: @tweet
       set_response
       respond_with @response, location: tweets_path
     else
