@@ -10,7 +10,7 @@ RSpec.describe Tweet, type: :model do
     it { is_expected.to validate_presence_of :user }
 
     it { is_expected.to validate_presence_of :message }
-    it { is_expected.to ensure_length_of(:message).is_at_most 140 }
+    it { is_expected.to validate_length_of(:message).is_at_most 140 }
   end
 
   context 'Attributes' do
