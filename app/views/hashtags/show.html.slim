@@ -3,7 +3,6 @@ h2
 
 - if @hashtag_tweets.any?
   - @hashtag_tweets.each do |tweet|
-    p = tweet.id
     p = tweet.message.html_safe
 - else
   p It seems no one is talking about #{@hashtag.keyword} anymore...
